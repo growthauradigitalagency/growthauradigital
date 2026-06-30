@@ -20,22 +20,22 @@ const featureCards = [
   {
     title: "Web Development",
     desc: "Fast, modern, responsive websites built to convert visitors into clients.",
-    icon: <FaCode className="text-xl text-[#0A2647]" />,
+    icon: <FaCode className="text-xl text-[#0A2647] dark:text-[#D4AF37]" />,
   },
   {
     title: "Creative Design",
     desc: "Brand visuals, posters, and social media creatives with a premium look.",
-    icon: <FaPalette className="text-xl text-[#0F5132]" />,
+    icon: <FaPalette className="text-xl text-[#0F5132] dark:text-[#6FCF97]" />,
   },
   {
     title: "Digital Marketing",
     desc: "Campaign-ready marketing assets designed to grow visibility and leads.",
-    icon: <FaBullhorn className="text-xl text-[#7F1D1D]" />,
+    icon: <FaBullhorn className="text-xl text-[#7F1D1D] dark:text-[#F28B82]" />,
   },
   {
     title: "Video Editing",
     desc: "Reels, promos, and ad content that keep your audience engaged.",
-    icon: <FaVideo className="text-xl text-[#D4AF37]" />,
+    icon: <FaVideo className="text-xl text-[#D4AF37] dark:text-[#FFD700]" />,
   },
 ];
 
@@ -44,25 +44,25 @@ const rotatingPills = [
     label: "Trusted Delivery",
     title: "We build with clarity, speed, and strategy.",
     desc: "Every project is designed to look premium and perform well across devices.",
-    icon: <FaShieldAlt className="text-2xl text-[#0F5132]" />,
+    icon: <FaShieldAlt className="text-2xl text-[#0F5132] dark:text-[#6FCF97]" />,
   },
   {
     label: "Brand Experience",
     title: "A polished look that feels custom-made.",
     desc: "We shape websites and creatives that reflect your brand identity properly.",
-    icon: <FaGlobe className="text-2xl text-[#0A2647]" />,
+    icon: <FaGlobe className="text-2xl text-[#0A2647] dark:text-[#D4AF37]" />,
   },
   {
     label: "Growth Focus",
     title: "More than design — built for business results.",
     desc: "From structure to visuals, every part is made to support growth.",
-    icon: <FaRocket className="text-2xl text-[#7F1D1D]" />,
+    icon: <FaRocket className="text-2xl text-[#7F1D1D] dark:text-[#F28B82]" />,
   },
   {
     label: "Mobile Ready",
     title: "Designed beautifully on every screen.",
     desc: "Your website will feel smooth, clean, and responsive on mobile and desktop.",
-    icon: <FaMobileAlt className="text-2xl text-[#D4AF37]" />,
+    icon: <FaMobileAlt className="text-2xl text-[#D4AF37] dark:text-[#FFD700]" />,
   },
 ];
 
@@ -103,28 +103,28 @@ const Home = () => {
   const current = rotatingPills[active];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-900 text-slate-900 dark:text-white">
       <Navbar />
 
       <main className="pt-24">
         {/* HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#EEF4FA]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.16),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.12),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.06),transparent_34%)]" />
-          <div className="absolute left-0 top-16 h-56 w-56 rounded-full bg-[#D4AF37]/10 blur-3xl" />
-          <div className="absolute right-0 top-36 h-64 w-64 rounded-full bg-[#0F5132]/10 blur-3xl" />
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#EEF4FA] dark:from-slate-800 dark:via-slate-800 dark:to-slate-900">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.16),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.12),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.06),transparent_34%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.08),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.06),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.04),transparent_34%)]" />
+          <div className="absolute left-0 top-16 h-56 w-56 rounded-full bg-[#D4AF37]/10 dark:bg-[#D4AF37]/5 blur-3xl" />
+          <div className="absolute right-0 top-36 h-64 w-64 rounded-full bg-[#0F5132]/10 dark:bg-[#0F5132]/5 blur-3xl" />
 
           <div className="relative mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl items-center gap-14 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8">
             <div>
-              <span className="inline-flex items-center rounded-full border border-[#D4AF37]/30 bg-white px-4 py-2 text-xs font-semibold tracking-[0.24em] text-[#0A2647] shadow-sm">
+              <span className="inline-flex items-center rounded-full border border-[#D4AF37]/30 dark:border-[#D4AF37]/20 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-semibold tracking-[0.24em] text-[#0A2647] dark:text-[#D4AF37] shadow-sm">
                 GROWTH AURA DIGITAL AGENCY
               </span>
 
-              <h1 className="font-heading mt-6 max-w-3xl text-4xl font-extrabold leading-tight text-[#0A2647] sm:text-5xl lg:text-6xl">
+              <h1 className="font-heading mt-6 max-w-3xl text-4xl font-extrabold leading-tight text-[#0A2647] dark:text-white sm:text-5xl lg:text-6xl">
                 Your brand deserves
-                <span className="block text-[#0F5132]">a premium digital presence</span>
+                <span className="block text-[#0F5132] dark:text-[#6FCF97]">a premium digital presence</span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
                 Growth Aura helps businesses stand out with modern websites, creative visuals,
                 UI/UX design, digital marketing assets, video editing, and AI-powered solutions
                 that feel professional from the first glance.
@@ -133,7 +133,7 @@ const Home = () => {
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] px-6 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-emerald-900/15 transition-transform duration-300 hover:scale-[1.03]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] dark:bg-[#0F5132] px-6 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-emerald-900/15 dark:shadow-emerald-900/30 transition-transform duration-300 hover:scale-[1.03]"
                 >
                   Start Your Project
                   <FaArrowRight size={12} />
@@ -141,24 +141,24 @@ const Home = () => {
 
                 <Link
                   to="/portfolio"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0A2647]/15 bg-white px-6 py-3.5 text-[15px] font-semibold text-[#0A2647] shadow-sm transition hover:border-[#D4AF37]/40 hover:text-[#0F5132]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0A2647]/15 dark:border-slate-600 bg-white dark:bg-slate-700 px-6 py-3.5 text-[15px] font-semibold text-[#0A2647] dark:text-white shadow-sm transition hover:border-[#D4AF37]/40 dark:hover:border-[#D4AF37]/40 hover:text-[#0F5132] dark:hover:text-[#6FCF97]"
                 >
                   View Portfolio
                 </Link>
               </div>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <p className="text-2xl font-bold text-[#0A2647]">01</p>
-                  <p className="mt-1 text-sm text-slate-600">Premium Brand Direction</p>
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <p className="text-2xl font-bold text-[#0A2647] dark:text-white">01</p>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Premium Brand Direction</p>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <p className="text-2xl font-bold text-[#0F5132]">24/7</p>
-                  <p className="mt-1 text-sm text-slate-600">24/7 Support</p>
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <p className="text-2xl font-bold text-[#0F5132] dark:text-[#6FCF97]">24/7</p>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">24/7 Support</p>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <p className="text-2xl font-bold text-[#7F1D1D]">100%</p>
-                  <p className="mt-1 text-sm text-slate-600">Customer Satisfaction</p>
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
+                  <p className="text-2xl font-bold text-[#7F1D1D] dark:text-[#F28B82]">100%</p>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Customer Satisfaction</p>
                 </div>
               </div>
 
@@ -171,7 +171,7 @@ const Home = () => {
                 ].map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
+                    className="rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 shadow-sm"
                   >
                     {item}
                   </span>
@@ -181,42 +181,42 @@ const Home = () => {
 
             {/* RIGHT SIDE PREMIUM CARD */}
             <div className="relative">
-              <div className="absolute -left-6 top-12 h-24 w-24 rounded-full bg-[#D4AF37]/15 blur-3xl" />
-              <div className="absolute -right-6 bottom-8 h-28 w-28 rounded-full bg-[#0F5132]/15 blur-3xl" />
+              <div className="absolute -left-6 top-12 h-24 w-24 rounded-full bg-[#D4AF37]/15 dark:bg-[#D4AF37]/5 blur-3xl" />
+              <div className="absolute -right-6 bottom-8 h-28 w-28 rounded-full bg-[#0F5132]/15 dark:bg-[#0F5132]/5 blur-3xl" />
 
-              <div className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-                <div className="rounded-[1.75rem] bg-gradient-to-br from-white to-[#F5F8FC] p-6">
+              <div className="rounded-[2rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.3)]">
+                <div className="rounded-[1.75rem] bg-gradient-to-br from-white to-[#F5F8FC] dark:from-slate-800 dark:to-slate-800/80 p-6">
                   <div className="flex items-center gap-4">
                     <img
                       src={logo}
                       alt="Growth Aura Digital Agency"
-                      className="h-20 w-20 rounded-full object-cover ring-2 ring-[#D4AF37]/40 shadow-md"
+                      className="h-20 w-20 rounded-full object-cover ring-2 ring-[#D4AF37]/40 dark:ring-[#D4AF37]/30 shadow-md"
                     />
 
                     <div>
-                      <p className="text-[11px] font-semibold tracking-[0.3em] text-slate-500">
+                      <p className="text-[11px] font-semibold tracking-[0.3em] text-slate-500 dark:text-slate-400">
                         GROWTH AURA
                       </p>
-                      <h2 className="font-heading mt-2 text-2xl font-bold text-[#0A2647] sm:text-3xl">
+                      <h2 className="font-heading mt-2 text-2xl font-bold text-[#0A2647] dark:text-white sm:text-3xl">
                         Build. Elevate. Grow.
                       </h2>
                     </div>
                   </div>
 
-                  <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <div className="mt-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-5 shadow-sm">
                     <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-50">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-50 dark:bg-slate-700">
                         {current.icon}
                       </div>
 
                       <div>
-                        <p className="text-xs font-semibold tracking-[0.26em] text-slate-500">
+                        <p className="text-xs font-semibold tracking-[0.26em] text-slate-500 dark:text-slate-400">
                           {current.label}
                         </p>
-                        <h3 className="font-heading mt-2 text-2xl font-bold text-slate-900">
+                        <h3 className="font-heading mt-2 text-2xl font-bold text-slate-900 dark:text-white">
                           {current.title}
                         </h3>
-                        <p className="mt-3 text-sm leading-7 text-slate-600">
+                        <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
                           {current.desc}
                         </p>
                       </div>
@@ -227,15 +227,15 @@ const Home = () => {
                     {featureCards.map((service) => (
                       <div
                         key={service.title}
-                        className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
+                        className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
                       >
-                        <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-slate-50">
+                        <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 dark:bg-slate-700">
                           {service.icon}
                         </div>
-                        <h3 className="font-heading text-[17px] font-bold text-slate-900">
+                        <h3 className="font-heading text-[17px] font-bold text-slate-900 dark:text-white">
                           {service.title}
                         </h3>
-                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                        <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
                           {service.desc}
                         </p>
                       </div>
@@ -250,8 +250,8 @@ const Home = () => {
                         onClick={() => setActive(index)}
                         className={`h-2.5 rounded-full transition-all duration-300 ${
                           active === index
-                            ? "w-8 bg-[#0F5132]"
-                            : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                            ? "w-8 bg-[#0F5132] dark:bg-[#6FCF97]"
+                            : "w-2.5 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400 dark:hover:bg-slate-500"
                         }`}
                         aria-label={`Go to slide ${index + 1}`}
                       />
@@ -264,16 +264,16 @@ const Home = () => {
         </section>
 
         {/* PROCESS */}
-        <section className="border-t border-slate-200 bg-white">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 OUR PROCESS
               </p>
-              <h2 className="font-heading mt-3 text-3xl font-bold text-[#0A2647] sm:text-4xl">
+              <h2 className="font-heading mt-3 text-3xl font-bold text-[#0A2647] dark:text-white sm:text-4xl">
                 A simple workflow with a premium result
               </h2>
-              <p className="mt-4 text-slate-600">
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
                 We keep the process clear, fast, and client-friendly so your brand stays in focus.
               </p>
             </div>
@@ -282,15 +282,15 @@ const Home = () => {
               {processSteps.map((item) => (
                 <div
                   key={item.step}
-                  className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
+                  className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
                 >
-                  <p className="text-sm font-semibold tracking-[0.25em] text-[#D4AF37]">
+                  <p className="text-sm font-semibold tracking-[0.25em] text-[#D4AF37] dark:text-[#FFD700]">
                     {item.step}
                   </p>
-                  <h3 className="font-heading mt-3 text-xl font-bold text-slate-900">
+                  <h3 className="font-heading mt-3 text-xl font-bold text-slate-900 dark:text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                  <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
                     {item.desc}
                   </p>
                 </div>
@@ -300,18 +300,18 @@ const Home = () => {
         </section>
 
         {/* CTA */}
-        <section className="border-t border-slate-200 bg-gradient-to-b from-[#F8FAFC] to-white">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-gradient-to-b from-[#F8FAFC] to-white dark:from-slate-800 dark:to-slate-900">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm sm:p-10 lg:p-12">
+            <div className="rounded-[2rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm sm:p-10 lg:p-12">
               <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
                 <div>
-                  <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+                  <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                     READY TO GROW
                   </p>
-                  <h2 className="font-heading mt-3 text-3xl font-bold text-[#0A2647] sm:text-4xl">
-                    Let’s create a brand that feels premium and trusted.
+                  <h2 className="font-heading mt-3 text-3xl font-bold text-[#0A2647] dark:text-white sm:text-4xl">
+                    Let's create a brand that feels premium and trusted.
                   </h2>
-                  <p className="mt-4 max-w-2xl text-slate-600">
+                  <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300">
                     From websites to visuals, Growth Aura gives your business a clean identity,
                     modern presentation, and a strong online impression.
                   </p>
@@ -320,7 +320,7 @@ const Home = () => {
                 <div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] px-6 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-emerald-900/15 transition-transform duration-300 hover:scale-[1.03]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] dark:bg-[#0F5132] px-6 py-3.5 text-[15px] font-semibold text-white shadow-lg shadow-emerald-900/15 dark:shadow-emerald-900/30 transition-transform duration-300 hover:scale-[1.03]"
                   >
                     Book a Consultation
                     <FaArrowRight size={12} />
@@ -328,7 +328,7 @@ const Home = () => {
 
                   <Link
                     to="/services"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0A2647]/15 bg-white px-6 py-3.5 text-[15px] font-semibold text-[#0A2647] shadow-sm transition hover:border-[#D4AF37]/40 hover:text-[#0F5132]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0A2647]/15 dark:border-slate-600 bg-white dark:bg-slate-700 px-6 py-3.5 text-[15px] font-semibold text-[#0A2647] dark:text-white shadow-sm transition hover:border-[#D4AF37]/40 dark:hover:border-[#D4AF37]/40 hover:text-[#0F5132] dark:hover:text-[#6FCF97]"
                   >
                     See Services
                   </Link>
@@ -336,16 +336,16 @@ const Home = () => {
               </div>
 
               <div className="mt-10 grid gap-4 md:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] px-5 py-4 text-[15px] font-medium text-slate-700">
-                  <FaCheckCircle className="mr-2 inline text-[#0F5132]" />
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 px-5 py-4 text-[15px] font-medium text-slate-700 dark:text-slate-300">
+                  <FaCheckCircle className="mr-2 inline text-[#0F5132] dark:text-[#6FCF97]" />
                   Premium website structure
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] px-5 py-4 text-[15px] font-medium text-slate-700">
-                  <FaCheckCircle className="mr-2 inline text-[#0F5132]" />
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 px-5 py-4 text-[15px] font-medium text-slate-700 dark:text-slate-300">
+                  <FaCheckCircle className="mr-2 inline text-[#0F5132] dark:text-[#6FCF97]" />
                   Strong visual branding
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] px-5 py-4 text-[15px] font-medium text-slate-700">
-                  <FaCheckCircle className="mr-2 inline text-[#0F5132]" />
+                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 px-5 py-4 text-[15px] font-medium text-slate-700 dark:text-slate-300">
+                  <FaCheckCircle className="mr-2 inline text-[#0F5132] dark:text-[#6FCF97]" />
                   Responsive and modern UI
                 </div>
               </div>

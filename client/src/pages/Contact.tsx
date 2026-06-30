@@ -1,7 +1,6 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Navbar from "../components/common/Navbar";
 import { Link } from "react-router-dom";
-import API from "../api/api";
 import {
   FaArrowRight,
   FaCalendarAlt,
@@ -14,26 +13,54 @@ import {
   FaWhatsapp,
   FaGraduationCap,
   FaBriefcase,
+  FaSpinner,
 } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
-const courses = [
+// =====================================================================
+// EMAILJS CONFIG — REPLACE THESE 3 VALUES WITH YOUR OWN FROM
+// https://dashboard.emailjs.com  (Email Services / Email Templates / Account)
+// =====================================================================
+const EMAILJS_SERVICE_ID = "service_v3kcrru";   // <-- your Service ID
+const EMAILJS_TEMPLATE_ID = "template_npkh5ex"; // <-- your Template ID
+const EMAILJS_PUBLIC_KEY = "-mnz3E3Y8i3mVoARb";    // <-- your Public Key
+// =====================================================================
+
+// All courses from the Courses page
+const allCourses = [
   "MERN Stack Development",
   "UI/UX Design",
   "Graphic Design",
   "Web Development",
   "Digital Marketing",
   "Video Editing",
-  "AI Integration Based Python",
-  "Python",
+  "AI Engineering",
+  "AI Integration Using Python",
+  "Python Programming",
+  "Business Analyst",
+  "Core Java",
+  "ETL Testing",
+  "Tally / Tally Prime",
+  "DevOps Engineering",
+  "Database Engineering",
   "Software Testing",
   "Internship Program",
   "Final Year Projects",
 ];
 
-const services = [
-  "Website Development",
-  "Graphic Design",
+// All services from the Services page
+const allServices = [
+  "Web Development",
+  "Mobile App Development",
+  "Cloud Driven Innovation",
+  "Intelligent SaaS Solutions",
   "UI/UX Design",
+  "Graphic Design",
+  "Digital Marketing",
+  "Software Testing",
+  "CRM Apps",
+  "ERP & HRM Solutions",
+  "Custom Apps",
   "Video Editing",
 ];
 
@@ -166,20 +193,47 @@ const Contact = () => {
 
   const handleCourseSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!courseForm.fullName || !courseForm.phoneNumber || !courseForm.preferredCourse) {
+      alert("⚠️ Please fill all required fields.");
+      return;
+    }
+
     try {
       setSubmittingCourse(true);
 
-      const { data } = await API.post("/api/contact/course-enquiry", courseForm);
+      const emailData = {
+        to_email: "growthauradigitalagency@gmail.com",
+        from_name: courseForm.fullName,
+        from_email: courseForm.email || "Not provided",
+        phone: courseForm.phoneNumber,
+        subject: `Course Enquiry: ${courseForm.preferredCourse}`,
+        course: courseForm.preferredCourse,
+        business: "N/A",
+        learning_mode: courseForm.learningMode,
+        experience_level: courseForm.experienceLevel,
+        preferred_date: "N/A",
+        preferred_time: "N/A",
+        message: courseForm.message || "No additional message",
+        type: "Course Enquiry",
+      };
 
-      if (data?.success) {
-        alert(data?.message || "Course enquiry submitted successfully.");
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        emailData,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        alert("✅ Course enquiry sent successfully! We'll get back to you soon.");
         setCourseForm(initialCourseForm);
       } else {
-        alert(data?.message || "Something went wrong.");
+        alert("❌ Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Course submit error:", error);
-      alert("Failed to submit course enquiry.");
+      alert("❌ Failed to send course enquiry. Please check your internet connection and try again.");
     } finally {
       setSubmittingCourse(false);
     }
@@ -187,23 +241,53 @@ const Contact = () => {
 
   const handleConsultationSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (
+      !consultationForm.fullName ||
+      !consultationForm.businessName ||
+      !consultationForm.serviceNeeded ||
+      !consultationForm.phoneNumber
+    ) {
+      alert("⚠️ Please fill all required fields.");
+      return;
+    }
+
     try {
       setSubmittingConsultation(true);
 
-      const { data } = await API.post(
-        "/api/contact/consultation",
-        consultationForm
+      const emailData = {
+        to_email: "growthauradigitalagency@gmail.com",
+        from_name: consultationForm.fullName,
+        from_email: consultationForm.email || "Not provided",
+        phone: consultationForm.phoneNumber,
+        business: consultationForm.businessName,
+        subject: `Consultation Booking: ${consultationForm.serviceNeeded}`,
+        course: "N/A",
+        service: consultationForm.serviceNeeded,
+        learning_mode: "N/A",
+        experience_level: "N/A",
+        preferred_date: consultationForm.preferredDate || "Not specified",
+        preferred_time: consultationForm.preferredTime || "Not specified",
+        message: consultationForm.message || "No additional message",
+        type: "Consultation Booking",
+      };
+
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        emailData,
+        EMAILJS_PUBLIC_KEY
       );
 
-      if (data?.success) {
-        alert(data?.message || "Consultation booking submitted successfully.");
+      if (result.status === 200) {
+        alert("✅ Consultation booked successfully! We'll contact you shortly.");
         setConsultationForm(initialConsultationForm);
       } else {
-        alert(data?.message || "Something went wrong.");
+        alert("❌ Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Consultation submit error:", error);
-      alert("Failed to submit consultation booking.");
+      alert("❌ Failed to book consultation. Please check your internet connection and try again.");
     } finally {
       setSubmittingConsultation(false);
     }
@@ -227,7 +311,7 @@ const Contact = () => {
               </span>
 
               <h1 className="font-heading mt-6 text-4xl font-extrabold leading-tight text-[#0A2647] sm:text-5xl lg:text-6xl dark:text-slate-100">
-                Let’s talk about your
+                Let's talk about your
                 <span className="block text-[#0F5132] dark:text-emerald-300">
                   next project or course
                 </span>
@@ -267,7 +351,7 @@ const Contact = () => {
                 href="tel:+91 8124229945"
                 className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
               >
-                <div className="mb-4 flex h-11 w- items-center justify-center rounded-full bg-white shadow-sm dark:bg-slate-950">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-white shadow-sm dark:bg-slate-950">
                   <FaPhoneAlt className="text-[#0F5132]" />
                 </div>
                 <p className="text-sm font-semibold tracking-[0.2em] text-slate-500 dark:text-slate-400">
@@ -289,8 +373,8 @@ const Contact = () => {
                   EMAIL
                 </p>
                 <p className="mt-2 text-lg font-bold text-[#0A2647] dark:text-slate-100">
-                 growthauradigitalagency
-                 @gmail.com
+                  growthauradigital
+                  agency@gmail.com
                 </p>
               </a>
 
@@ -358,7 +442,7 @@ const Contact = () => {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Full Name
+                        Full Name *
                       </label>
                       <input
                         name="fullName"
@@ -373,7 +457,7 @@ const Contact = () => {
 
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Phone Number
+                        Phone Number *
                       </label>
                       <input
                         name="phoneNumber"
@@ -404,7 +488,7 @@ const Contact = () => {
 
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Preferred Course
+                        Preferred Course *
                       </label>
                       <select
                         name="preferredCourse"
@@ -414,12 +498,59 @@ const Contact = () => {
                         required
                       >
                         <option value="">Select a course</option>
-                        <optgroup label="Courses">
-                          {courses
+                        <optgroup label="Development & Programming">
+                          {allCourses
                             .filter(
                               (course) =>
-                                course !== "Internship Program" &&
-                                course !== "Final Year Projects"
+                                course === "MERN Stack Development" ||
+                                course === "Web Development" ||
+                                course === "Python Programming" ||
+                                course === "Core Java" ||
+                                course === "Database Engineering"
+                            )
+                            .map((course) => (
+                              <option key={course} value={course}>
+                                {course}
+                              </option>
+                            ))}
+                        </optgroup>
+                        <optgroup label="Design & Creative">
+                          {allCourses
+                            .filter(
+                              (course) =>
+                                course === "UI/UX Design" ||
+                                course === "Graphic Design" ||
+                                course === "Video Editing"
+                            )
+                            .map((course) => (
+                              <option key={course} value={course}>
+                                {course}
+                              </option>
+                            ))}
+                        </optgroup>
+                        <optgroup label="AI & Data">
+                          {allCourses
+                            .filter(
+                              (course) =>
+                                course === "AI Engineering" ||
+                                course === "AI Integration Using Python" ||
+                                course === "ETL Testing" ||
+                                course === "Business Analyst"
+                            )
+                            .map((course) => (
+                              <option key={course} value={course}>
+                                {course}
+                              </option>
+                            ))}
+                        </optgroup>
+                        <optgroup label="Business & DevOps">
+                          {allCourses
+                            .filter(
+                              (course) =>
+                                course === "Digital Marketing" ||
+                                course === "Tally / Tally Prime" ||
+                                course === "DevOps Engineering" ||
+                                course === "Software Testing"
                             )
                             .map((course) => (
                               <option key={course} value={course}>
@@ -428,12 +559,17 @@ const Contact = () => {
                             ))}
                         </optgroup>
                         <optgroup label="Programs">
-                          <option value="Internship Program">
-                            Internship Program
-                          </option>
-                          <option value="Final Year Projects">
-                            Final Year Projects
-                          </option>
+                          {allCourses
+                            .filter(
+                              (course) =>
+                                course === "Internship Program" ||
+                                course === "Final Year Projects"
+                            )
+                            .map((course) => (
+                              <option key={course} value={course}>
+                                {course}
+                              </option>
+                            ))}
                         </optgroup>
                       </select>
                     </div>
@@ -479,7 +615,7 @@ const Contact = () => {
                     </label>
                     <textarea
                       name="message"
-                      rows={5}
+                      rows={4}
                       value={courseForm.message}
                       onChange={handleCourseChange}
                       placeholder="Tell us what you want to learn..."
@@ -492,8 +628,17 @@ const Contact = () => {
                     disabled={submittingCourse}
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] px-6 py-3.5 font-semibold text-white shadow-lg shadow-emerald-900/15 transition-transform duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    {submittingCourse ? "Sending..." : "Send Course Enquiry"}
-                    <FaArrowRight size={12} />
+                    {submittingCourse ? (
+                      <>
+                        <FaSpinner className="animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Course Enquiry
+                        <FaArrowRight size={12} />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
@@ -521,7 +666,7 @@ const Contact = () => {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Full Name
+                        Full Name *
                       </label>
                       <input
                         name="fullName"
@@ -536,7 +681,7 @@ const Contact = () => {
 
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Business / Company
+                        Business / Company *
                       </label>
                       <input
                         name="businessName"
@@ -553,7 +698,7 @@ const Contact = () => {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Service Needed
+                        Service Needed *
                       </label>
                       <select
                         name="serviceNeeded"
@@ -563,17 +708,67 @@ const Contact = () => {
                         required
                       >
                         <option value="">Select a service</option>
-                        {services.map((service) => (
-                          <option key={service} value={service}>
-                            {service}
-                          </option>
-                        ))}
+                        <optgroup label="Development Services">
+                          {allServices
+                            .filter(
+                              (service) =>
+                                service === "Web Development" ||
+                                service === "Mobile App Development" ||
+                                service === "Cloud Driven Innovation" ||
+                                service === "Intelligent SaaS Solutions" ||
+                                service === "Custom Apps"
+                            )
+                            .map((service) => (
+                              <option key={service} value={service}>
+                                {service}
+                              </option>
+                            ))}
+                        </optgroup>
+                        <optgroup label="Design & Creative">
+                          {allServices
+                            .filter(
+                              (service) =>
+                                service === "UI/UX Design" ||
+                                service === "Graphic Design" ||
+                                service === "Video Editing"
+                            )
+                            .map((service) => (
+                              <option key={service} value={service}>
+                                {service}
+                              </option>
+                            ))}
+                        </optgroup>
+                        <optgroup label="Business & Marketing">
+                          {allServices
+                            .filter(
+                              (service) =>
+                                service === "Digital Marketing" ||
+                                service === "CRM Apps" ||
+                                service === "ERP & HRM Solutions"
+                            )
+                            .map((service) => (
+                              <option key={service} value={service}>
+                                {service}
+                              </option>
+                            ))}
+                        </optgroup>
+                        <optgroup label="Quality & Testing">
+                          {allServices
+                            .filter(
+                              (service) => service === "Software Testing"
+                            )
+                            .map((service) => (
+                              <option key={service} value={service}>
+                                {service}
+                              </option>
+                            ))}
+                        </optgroup>
                       </select>
                     </div>
 
                     <div>
                       <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        Phone Number
+                        Phone Number *
                       </label>
                       <input
                         name="phoneNumber"
@@ -637,7 +832,7 @@ const Contact = () => {
                     </label>
                     <textarea
                       name="message"
-                      rows={5}
+                      rows={4}
                       value={consultationForm.message}
                       onChange={handleConsultationChange}
                       placeholder="Tell us about your project, goals, and expectations..."
@@ -650,8 +845,17 @@ const Contact = () => {
                     disabled={submittingConsultation}
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0A2647] px-6 py-3.5 font-semibold text-white shadow-lg shadow-blue-900/15 transition-transform duration-300 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70 dark:bg-sky-600"
                   >
-                    {submittingConsultation ? "Booking..." : "Book Consultation"}
-                    <FaCalendarAlt size={12} />
+                    {submittingConsultation ? (
+                      <>
+                        <FaSpinner className="animate-spin" />
+                        Booking...
+                      </>
+                    ) : (
+                      <>
+                        Book Consultation
+                        <FaCalendarAlt size={12} />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
@@ -703,8 +907,9 @@ const Contact = () => {
                 <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
                   Growth Aura Digital Agency
                   <br />
-                  Thanjavur, Tamil Nadu, India<br/>
-                  Chennai,Tamil Nadu, India
+                  Thanjavur, Tamil Nadu, India
+                  <br />
+                  Chennai, Tamil Nadu, India
                 </p>
               </div>
             </div>
@@ -747,7 +952,7 @@ const Contact = () => {
                     READY TO START
                   </p>
                   <h2 className="font-heading mt-3 text-3xl font-bold sm:text-4xl">
-                    Let’s create something premium together.
+                    Let's create something premium together.
                   </h2>
                   <p className="mt-4 max-w-2xl leading-8 text-white/80">
                     Whether you are looking for agency services or course

@@ -11,38 +11,47 @@ import {
   FaArrowRight,
   FaCheckCircle,
   FaChevronDown,
-  FaClock,
   FaLayerGroup,
   FaCertificate,
   FaBriefcase,
   FaFilePdf,
   FaDownload,
   FaSpinner,
+  FaChartLine,
+  FaBrain,
+  FaJava,
+  FaDatabase,
+  FaCloud,
+  FaServer,
 } from "react-icons/fa";
 
 // Import PDF files - make sure these files exist in your src/assets/brochures/ folder
-// If they don't exist, create placeholder PDFs or use the fallback approach below
 import mernBrochure from "../assets/brochures/mern-stack-brochure.pdf";
 import uiuxBrochure from "../assets/brochures/ui-ux-brochure.pdf";
 import graphicBrochure from "../assets/brochures/graphic-design-brochure.pdf";
 import webBrochure from "../assets/brochures/web-dev-brochure.pdf";
 import digitalBrochure from "../assets/brochures/digital-marketing-brochure.pdf";
 import videoBrochure from "../assets/brochures/video-editing-brochure.pdf";
-import aiBrochure from "../assets/brochures/ai-python-brochure.pdf";
+import aiBrochure from "../assets/brochures/AI ENGINEERING.pdf";
 import pythonBrochure from "../assets/brochures/ai-python-brochure.pdf";
 import testingBrochure from "../assets/brochures/software-testing-brochure.pdf";
+import businessAnalystBrochure from "../assets/brochures/business-analyst-brochure.pdf";
+import coreJavaBrochure from "../assets/brochures/core-java-brochure.pdf";
+import etlTestingBrochure from "../assets/brochures/etl-testing-brochure.pdf";
+import tallyBrochure from "../assets/brochures/tally-brochure.pdf";
+import devopsBrochure from "../assets/brochures/devops-brochure.pdf";
+import databaseBrochure from "../assets/brochures/database-engineering-brochure.pdf";
 
 type CourseItem = {
   title: string;
   icon: React.ReactNode;
   color: string;
   description: string;
-  duration: string;
   level: string;
   highlights: string[];
   outcome: string;
   brochurePath?: string;
-  hasBrochure?: boolean;
+  hasBrochure: boolean;
 };
 
 const courses: CourseItem[] = [
@@ -52,7 +61,6 @@ const courses: CourseItem[] = [
     color: "text-[#0A2647] dark:text-sky-300",
     description:
       "Build modern full-stack web applications using MongoDB, Express.js, React, and Node.js.",
-    duration: "3 Months",
     level: "Beginner to Advanced",
     highlights: [
       "Build REST APIs with Node.js & Express",
@@ -71,7 +79,6 @@ const courses: CourseItem[] = [
     color: "text-[#0F5132] dark:text-emerald-300",
     description:
       "Learn wireframing, user research, prototyping, and modern design systems.",
-    duration: "2 Months",
     level: "Beginner Friendly",
     highlights: [
       "User research & persona building",
@@ -90,7 +97,6 @@ const courses: CourseItem[] = [
     color: "text-[#7F1D1D] dark:text-rose-300",
     description:
       "Master branding, social media design, posters, and professional creative assets.",
-    duration: "2 Months",
     level: "Beginner Friendly",
     highlights: [
       "Brand identity & logo design",
@@ -109,7 +115,6 @@ const courses: CourseItem[] = [
     color: "text-[#D4AF37] dark:text-amber-300",
     description:
       "Learn HTML, CSS, JavaScript, responsive layouts, and modern frontend development.",
-    duration: "2.5 Months",
     level: "Beginner to Intermediate",
     highlights: [
       "HTML5, CSS3 & modern layout techniques",
@@ -128,7 +133,6 @@ const courses: CourseItem[] = [
     color: "text-[#0F5132] dark:text-emerald-300",
     description:
       "SEO, social media marketing, content marketing, paid advertising, and branding.",
-    duration: "2 Months",
     level: "Beginner Friendly",
     highlights: [
       "SEO fundamentals & keyword research",
@@ -147,7 +151,6 @@ const courses: CourseItem[] = [
     color: "text-[#7F1D1D] dark:text-rose-300",
     description:
       "Create professional reels, ads, YouTube videos, and cinematic content.",
-    duration: "1.5 Months",
     level: "Beginner Friendly",
     highlights: [
       "Editing fundamentals in Premiere Pro / CapCut",
@@ -161,12 +164,29 @@ const courses: CourseItem[] = [
     hasBrochure: true,
   },
   {
+    title: "AI Engineering",
+    icon: <FaBrain />,
+    color: "text-[#0A2647] dark:text-purple-300",
+    description:
+      "Master AI engineering with Python, machine learning, deep learning, and real-world AI applications.",
+    level: "Intermediate to Advanced",
+    highlights: [
+      "Machine learning algorithms & models",
+      "Deep learning with TensorFlow & PyTorch",
+      "Natural language processing (NLP)",
+      "Computer vision & AI deployment",
+    ],
+    outcome:
+      "You'll be able to build and deploy AI models for real-world applications and solve complex problems.",
+    brochurePath: aiBrochure,
+    hasBrochure: true,
+  },
+  {
     title: "AI Integration Using Python",
     icon: <FaPython />,
     color: "text-[#0A2647] dark:text-sky-300",
     description:
       "Build AI-powered applications using Python, APIs, automation, and AI tools.",
-    duration: "1.5 Months",
     level: "Intermediate",
     highlights: [
       "Working with AI APIs (OpenAI, Claude, etc.)",
@@ -185,7 +205,6 @@ const courses: CourseItem[] = [
     color: "text-[#D4AF37] dark:text-amber-300",
     description:
       "Learn Python fundamentals, OOP, automation, APIs, and real-world projects.",
-    duration: "2 Months",
     level: "Beginner Friendly",
     highlights: [
       "Python syntax & core programming concepts",
@@ -199,12 +218,119 @@ const courses: CourseItem[] = [
     hasBrochure: true,
   },
   {
+    title: "Business Analyst",
+    icon: <FaChartLine />,
+    color: "text-[#0F5132] dark:text-emerald-300",
+    description:
+      "Master business analysis, requirements gathering, data analytics, and business process optimization.",
+    level: "Beginner Friendly",
+    highlights: [
+      "Requirements gathering & documentation",
+      "Business process modeling",
+      "Data analysis & visualization",
+      "Stakeholder communication & Agile practices",
+    ],
+    outcome:
+      "You'll be ready to bridge the gap between business needs and technical solutions as a certified business analyst.",
+    brochurePath: businessAnalystBrochure,
+    hasBrochure: true,
+  },
+  {
+    title: "Core Java",
+    icon: <FaJava />,
+    color: "text-[#7F1D1D] dark:text-rose-300",
+    description:
+      "Learn Java fundamentals, OOP concepts, data structures, and build real-world applications.",
+    level: "Beginner to Intermediate",
+    highlights: [
+      "Java syntax & core programming concepts",
+      "Object-oriented programming (OOP)",
+      "Data structures & algorithms",
+      "Building real-world Java applications",
+    ],
+    outcome:
+      "You'll build a strong foundation in Java programming and be ready for enterprise development roles.",
+    brochurePath: coreJavaBrochure,
+    hasBrochure: true,
+  },
+  {
+    title: "ETL Testing",
+    icon: <FaDatabase />,
+    color: "text-[#D4AF37] dark:text-amber-300",
+    description:
+      "Master ETL testing, data validation, data warehousing, and quality assurance for data pipelines.",
+    level: "Intermediate",
+    highlights: [
+      "ETL process & data warehousing fundamentals",
+      "Data validation & quality assurance",
+      "SQL for data testing",
+      "Automation testing tools for ETL",
+    ],
+    outcome:
+      "You'll be able to ensure data quality and reliability in ETL pipelines as a certified ETL tester.",
+    brochurePath: etlTestingBrochure,
+    hasBrochure: true,
+  },
+  {
+    title: "Tally / Tally Prime",
+    icon: <FaServer />,
+    color: "text-[#0A2647] dark:text-sky-300",
+    description:
+      "Learn accounting fundamentals, GST, inventory management, and financial reporting using Tally Prime.",
+    level: "Beginner Friendly",
+    highlights: [
+      "Accounting fundamentals & GST compliance",
+      "Inventory & stock management",
+      "Financial reporting & analysis",
+      "Payroll processing & banking",
+    ],
+    outcome:
+      "You'll be proficient in Tally Prime and ready to manage accounting and finance operations for businesses.",
+    brochurePath: tallyBrochure,
+    hasBrochure: true,
+  },
+  {
+    title: "DevOps Engineering",
+    icon: <FaCloud />,
+    color: "text-[#0F5132] dark:text-emerald-300",
+    description:
+      "Master CI/CD, containerization, cloud platforms, and automation tools for modern DevOps practices.",
+    level: "Intermediate to Advanced",
+    highlights: [
+      "CI/CD pipelines with Jenkins & GitLab",
+      "Docker & Kubernetes containerization",
+      "Cloud platforms (AWS, Azure, GCP)",
+      "Infrastructure as Code (Terraform)",
+    ],
+    outcome:
+      "You'll be able to design and implement scalable DevOps workflows for development teams.",
+    brochurePath: devopsBrochure,
+    hasBrochure: true,
+  },
+  {
+    title: "Database Engineering",
+    icon: <FaDatabase />,
+    color: "text-[#7F1D1D] dark:text-rose-300",
+    description:
+      "Master database design, SQL, NoSQL, optimization, and data management for enterprise applications.",
+    level: "Intermediate",
+    highlights: [
+      "Relational database design & SQL",
+      "NoSQL databases (MongoDB, Cassandra)",
+      "Query optimization & performance tuning",
+      "Database security & backup strategies",
+    ],
+    outcome:
+      "You'll be able to design, manage, and optimize databases for high-performance applications.",
+    brochurePath: databaseBrochure,
+    hasBrochure: true,
+  },
+  {
     title: "Software Testing",
     icon: <FaCheckCircle />,
     color: "text-[#0F5132] dark:text-emerald-300",
     description:
       "Understand manual testing, automation testing, QA processes, and industry practices.",
-    duration: "1.5 Months",
     level: "Beginner Friendly",
     highlights: [
       "Manual testing fundamentals & test cases",
@@ -223,7 +349,6 @@ const courses: CourseItem[] = [
     color: "text-[#0A2647] dark:text-sky-300",
     description:
       "Gain practical experience by working on real tasks, guided by mentor support and review.",
-    duration: "1 to 3 Months",
     level: "For Students & Beginners",
     highlights: [
       "Work on real-world tasks and assignments",
@@ -241,7 +366,6 @@ const courses: CourseItem[] = [
     color: "text-[#7F1D1D] dark:text-rose-300",
     description:
       "Get full support to build impressive final year projects with documentation and deployment help.",
-    duration: "Project Based",
     level: "College Students",
     highlights: [
       "Project idea selection and planning",
@@ -322,7 +446,7 @@ const Courses = () => {
             {/* STATS */}
             <div className="mt-14 grid grid-cols-2 gap-6 border-t border-slate-200 pt-10 sm:grid-cols-4 dark:border-slate-800">
               {[
-                { value: "11+", label: "Professional Courses" },
+                { value: "18+", label: "Professional Courses" },
                 { value: "100%", label: "Practical Learning" },
                 { value: "Live", label: "Project Training" },
                 { value: "Career", label: "Focused Programs" },
@@ -384,10 +508,6 @@ const Courses = () => {
                     </p>
 
                     <div className="mt-4 flex flex-wrap gap-3 text-xs font-semibold text-slate-500 dark:text-slate-400">
-                      <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 dark:border-slate-800 dark:bg-slate-950">
-                        <FaClock className="text-[#D4AF37]" />
-                        {course.duration}
-                      </span>
                       <span className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 dark:border-slate-800 dark:bg-slate-950">
                         <FaLayerGroup className="text-[#0F5132]" />
                         {course.level}

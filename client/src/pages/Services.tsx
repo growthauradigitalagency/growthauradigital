@@ -23,12 +23,18 @@ import {
   FaDatabase,
   FaChevronDown,
   FaChevronUp,
+  FaCloud,
+  FaRobot,
+  FaUsersCog,
+  FaChartLine,
+  FaBug,
+  FaCogs,
 } from "react-icons/fa";
 
 const services = [
   {
-    icon: <FaCode className="text-3xl text-[#0A2647]" />,
-    title: "Website Development",
+    icon: <FaCode className="text-3xl text-[#0A2647] dark:text-[#D4AF37]" />,
+    title: "Web Development",
     description:
       "Custom business websites designed to build trust, improve visibility, and generate leads.",
     features: [
@@ -39,19 +45,43 @@ const services = [
     ],
   },
   {
-    icon: <FaPalette className="text-3xl text-[#0F5132]" />,
-    title: "Graphic Design",
+    icon: <FaMobileAlt className="text-3xl text-[#0F5132] dark:text-[#6FCF97]" />,
+    title: "Mobile App Development",
     description:
-      "Creative visuals that strengthen your brand identity and improve audience engagement.",
+      "Native and cross-platform mobile applications that deliver seamless user experiences on iOS and Android.",
     features: [
-      "Social Media Creatives",
-      "Posters & Banners",
-      "Brand Assets",
-      "Marketing Designs",
+      "iOS & Android Apps",
+      "Cross-Platform Solutions",
+      "App Store Optimization",
+      "Push Notifications",
     ],
   },
   {
-    icon: <FaDesktop className="text-3xl text-[#7F1D1D]" />,
+    icon: <FaCloud className="text-3xl text-[#7F1D1D] dark:text-[#F28B82]" />,
+    title: "Cloud Driven Innovation",
+    description:
+      "Scalable cloud solutions that modernize your infrastructure and accelerate digital transformation.",
+    features: [
+      "Cloud Migration",
+      "AWS/Azure/GCP",
+      "Serverless Architecture",
+      "DevOps Automation",
+    ],
+  },
+  {
+    icon: <FaRobot className="text-3xl text-[#D4AF37] dark:text-[#FFD700]" />,
+    title: "Intelligent SaaS Solutions",
+    description:
+      "AI-powered software as a service platforms that streamline operations and deliver data-driven insights.",
+    features: [
+      "AI Integration",
+      "Analytics Dashboards",
+      "Subscription Management",
+      "API-First Design",
+    ],
+  },
+  {
+    icon: <FaDesktop className="text-3xl text-[#0A2647] dark:text-[#D4AF37]" />,
     title: "UI/UX Design",
     description:
       "Professional user experiences that feel intuitive, premium, and conversion-focused.",
@@ -63,7 +93,79 @@ const services = [
     ],
   },
   {
-    icon: <FaVideo className="text-3xl text-[#D4AF37]" />,
+    icon: <FaPalette className="text-3xl text-[#0F5132] dark:text-[#6FCF97]" />,
+    title: "Graphic Design",
+    description:
+      "Creative visuals that strengthen your brand identity and improve audience engagement.",
+    features: [
+      "Social Media Creatives",
+      "Posters & Banners",
+      "Brand Assets",
+      "Marketing Designs",
+    ],
+  },
+  {
+    icon: <FaBullhorn className="text-3xl text-[#7F1D1D] dark:text-[#F28B82]" />,
+    title: "Digital Marketing",
+    description:
+      "Data-driven marketing strategies that increase visibility, engagement, and conversions.",
+    features: [
+      "SEO & SEM",
+      "Social Media Marketing",
+      "Content Marketing",
+      "Email Campaigns",
+    ],
+  },
+  {
+    icon: <FaBug className="text-3xl text-[#D4AF37] dark:text-[#FFD700]" />,
+    title: "Software Testing",
+    description:
+      "Comprehensive quality assurance and testing services to ensure your applications are reliable and bug-free.",
+    features: [
+      "Manual Testing",
+      "Automated Testing",
+      "Performance Testing",
+      "Security Testing",
+    ],
+  },
+  {
+    icon: <FaUsersCog className="text-3xl text-[#0A2647] dark:text-[#D4AF37]" />,
+    title: "CRM Apps",
+    description:
+      "Custom CRM solutions that help you manage relationships, track leads, and drive sales growth.",
+    features: [
+      "Lead Management",
+      "Sales Pipeline",
+      "Customer Analytics",
+      "Integration Ready",
+    ],
+  },
+  {
+    icon: <FaCogs className="text-3xl text-[#0F5132] dark:text-[#6FCF97]" />,
+    title: "ERP & HRM Solutions",
+    description:
+      "Enterprise resource planning and human resource management systems built for operational excellence.",
+    features: [
+      "Resource Planning",
+      "Employee Management",
+      "Payroll Integration",
+      "Performance Tracking",
+    ],
+  },
+  {
+    icon: <FaChartLine className="text-3xl text-[#7F1D1D] dark:text-[#F28B82]" />,
+    title: "Custom Apps",
+    description:
+      "Tailor-made applications designed to solve your unique business challenges and workflows.",
+    features: [
+      "Custom Workflows",
+      "Scalable Architecture",
+      "Secure Data Handling",
+      "Ongoing Support",
+    ],
+  },
+  {
+    icon: <FaVideo className="text-3xl text-[#D4AF37] dark:text-[#FFD700]" />,
     title: "Video Editing",
     description:
       "High-quality video content designed to improve engagement and brand presence.",
@@ -219,27 +321,27 @@ const TermsSection = () => {
       {termsData.map((section, idx: number) => (
         <div
           key={idx}
-          className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden"
+          className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm overflow-hidden"
         >
           <button
             onClick={() => toggleItem(idx)}
-            className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
           >
-            <h3 className="font-heading text-lg font-bold text-[#0A2647]">
+            <h3 className="font-heading text-lg font-bold text-[#0A2647] dark:text-white">
               {section.title}
             </h3>
             {openItems.includes(idx) ? (
-              <FaChevronUp className="text-[#0F5132]" />
+              <FaChevronUp className="text-[#0F5132] dark:text-[#6FCF97]" />
             ) : (
-              <FaChevronDown className="text-[#0F5132]" />
+              <FaChevronDown className="text-[#0F5132] dark:text-[#6FCF97]" />
             )}
           </button>
           {openItems.includes(idx) && (
             <div className="px-6 pb-6 space-y-3">
               {section.items.map((item: string, index: number) => (
                 <div key={index} className="flex items-start gap-3">
-                  <FaCheckCircle className="mt-1 flex-shrink-0 text-[#0F5132] text-sm" />
-                  <p className="text-slate-700 leading-6">{item}</p>
+                  <FaCheckCircle className="mt-1 flex-shrink-0 text-[#0F5132] dark:text-[#6FCF97] text-sm" />
+                  <p className="text-slate-700 dark:text-slate-300 leading-6">{item}</p>
                 </div>
               ))}
             </div>
@@ -319,28 +421,28 @@ const PrivacySection = () => {
       {privacyData.map((section, idx: number) => (
         <div
           key={idx}
-          className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden"
+          className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm overflow-hidden"
         >
           <button
             onClick={() => toggleSection(idx)}
-            className="w-full px-6 py-4 flex items-center gap-3 hover:bg-slate-50 transition-colors"
+            className="w-full px-6 py-4 flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors"
           >
-            <span className="text-2xl text-[#0F5132]">{section.icon}</span>
-            <span className="flex-1 text-left font-heading text-lg font-bold text-[#0A2647]">
+            <span className="text-2xl text-[#0F5132] dark:text-[#6FCF97]">{section.icon}</span>
+            <span className="flex-1 text-left font-heading text-lg font-bold text-[#0A2647] dark:text-white">
               {section.title}
             </span>
             {openSections.includes(idx) ? (
-              <FaChevronUp className="text-[#0F5132]" />
+              <FaChevronUp className="text-[#0F5132] dark:text-[#6FCF97]" />
             ) : (
-              <FaChevronDown className="text-[#0F5132]" />
+              <FaChevronDown className="text-[#0F5132] dark:text-[#6FCF97]" />
             )}
           </button>
           {openSections.includes(idx) && (
             <div className="px-6 pb-6 space-y-2">
               {section.items.map((item: string, index: number) => (
                 <div key={index} className="flex items-start gap-3">
-                  <FaCheckCircle className="mt-1 flex-shrink-0 text-[#0F5132] text-sm" />
-                  <span className="text-slate-700">{item}</span>
+                  <FaCheckCircle className="mt-1 flex-shrink-0 text-[#0F5132] dark:text-[#6FCF97] text-sm" />
+                  <span className="text-slate-700 dark:text-slate-300">{item}</span>
                 </div>
               ))}
             </div>
@@ -355,28 +457,28 @@ const Services = () => {
   const [activeTab, setActiveTab] = useState<"terms" | "privacy">("terms");
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-900">
       <Navbar />
 
       <main className="pt-24">
         {/* HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#EEF4FA]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.14),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.10),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.06),transparent_34%)]" />
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#EEF4FA] dark:from-slate-800 dark:via-slate-800 dark:to-slate-900">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.14),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.10),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.06),transparent_34%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.08),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.06),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.04),transparent_34%)]" />
 
           <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
             <div className="max-w-4xl">
-              <span className="inline-flex rounded-full border border-[#D4AF37]/30 bg-white px-4 py-2 text-xs font-semibold tracking-[0.25em] text-[#0A2647] shadow-sm">
+              <span className="inline-flex rounded-full border border-[#D4AF37]/30 dark:border-[#D4AF37]/20 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-[#0A2647] dark:text-[#D4AF37] shadow-sm">
                 OUR SERVICES
               </span>
 
-              <h1 className="font-heading mt-6 text-5xl font-extrabold leading-tight text-[#0A2647] lg:text-6xl">
+              <h1 className="font-heading mt-6 text-5xl font-extrabold leading-tight text-[#0A2647] dark:text-white lg:text-6xl">
                 Digital solutions built
-                <span className="block text-[#0F5132]">
+                <span className="block text-[#0F5132] dark:text-[#6FCF97]">
                   for modern businesses
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">
                 We help businesses create stronger digital experiences through
                 premium websites, creative design, modern UI/UX, and engaging
                 content that builds trust and drives growth.
@@ -384,13 +486,13 @@ const Services = () => {
             </div>
 
             {/* TRUST STATS */}
-            <div className="mt-14 grid grid-cols-2 gap-6 border-t border-slate-200 pt-10 sm:grid-cols-4">
+            <div className="mt-14 grid grid-cols-2 gap-6 border-t border-slate-200 dark:border-slate-700 pt-10 sm:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-heading text-3xl font-extrabold text-[#0A2647] lg:text-4xl">
+                  <p className="font-heading text-3xl font-extrabold text-[#0A2647] dark:text-white lg:text-4xl">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-sm text-slate-600">{stat.label}</p>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -398,9 +500,9 @@ const Services = () => {
         </section>
 
         {/* TRUSTED BY */}
-        <section className="border-t border-slate-200 bg-white py-12">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-xs font-semibold tracking-[0.3em] text-slate-500">
+            <p className="text-center text-xs font-semibold tracking-[0.3em] text-slate-500 dark:text-slate-400">
               TRUSTED BY GROWING BUSINESSES
             </p>
 
@@ -408,7 +510,7 @@ const Services = () => {
               {clientLogos.map((name) => (
                 <span
                   key={name}
-                  className="text-base font-bold text-[#0A2647]/40"
+                  className="text-base font-bold text-[#0A2647]/40 dark:text-white/40"
                 >
                   {name}
                 </span>
@@ -418,23 +520,23 @@ const Services = () => {
         </section>
 
         {/* SERVICES GRID */}
-        <section className="bg-white py-20">
+        <section className="bg-white dark:bg-slate-800 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (
                 <div
                   key={service.title}
-                  className="rounded-[2rem] border border-slate-200 bg-[#F8FAFC] p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-lg"
+                  className="rounded-[2rem] border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-lg dark:hover:shadow-slate-700/30"
                 >
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-slate-700 shadow-sm">
                     {service.icon}
                   </div>
 
-                  <h3 className="font-heading text-2xl font-bold text-slate-900">
+                  <h3 className="font-heading text-2xl font-bold text-slate-900 dark:text-white">
                     {service.title}
                   </h3>
 
-                  <p className="mt-4 text-slate-600 leading-8">
+                  <p className="mt-4 text-slate-600 dark:text-slate-300 leading-8">
                     {service.description}
                   </p>
 
@@ -444,8 +546,8 @@ const Services = () => {
                         key={feature}
                         className="flex items-center gap-3"
                       >
-                        <FaCheckCircle className="text-[#0F5132]" />
-                        <span className="text-slate-700">{feature}</span>
+                        <FaCheckCircle className="text-[#0F5132] dark:text-[#6FCF97]" />
+                        <span className="text-slate-700 dark:text-slate-300">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -456,14 +558,14 @@ const Services = () => {
         </section>
 
         {/* WHY CHOOSE US */}
-        <section className="border-t border-slate-200 bg-[#F8FAFC] py-20">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 WHY CHOOSE GROWTH AURA
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 Built for businesses that want a stronger digital presence
               </h2>
             </div>
@@ -489,13 +591,13 @@ const Services = () => {
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+                  className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm"
                 >
-                  <div className="mb-4 text-2xl text-[#0F5132]">
+                  <div className="mb-4 text-2xl text-[#0F5132] dark:text-[#6FCF97]">
                     {item.icon}
                   </div>
 
-                  <h3 className="font-heading text-xl font-bold text-slate-900">
+                  <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white">
                     {item.title}
                   </h3>
                 </div>
@@ -505,14 +607,14 @@ const Services = () => {
         </section>
 
         {/* PROCESS */}
-        <section className="bg-white py-20">
+        <section className="bg-white dark:bg-slate-800 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 OUR PROCESS
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 From idea to execution
               </h2>
             </div>
@@ -521,17 +623,17 @@ const Services = () => {
               {process.map((item) => (
                 <div
                   key={item.number}
-                  className="rounded-3xl border border-slate-200 bg-[#F8FAFC] p-6"
+                  className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 p-6"
                 >
-                  <span className="text-lg font-bold text-[#D4AF37]">
+                  <span className="text-lg font-bold text-[#D4AF37] dark:text-[#FFD700]">
                     {item.number}
                   </span>
 
-                  <h3 className="font-heading mt-3 text-2xl font-bold text-slate-900">
+                  <h3 className="font-heading mt-3 text-2xl font-bold text-slate-900 dark:text-white">
                     {item.title}
                   </h3>
 
-                  <p className="mt-4 text-slate-600 leading-7">
+                  <p className="mt-4 text-slate-600 dark:text-slate-300 leading-7">
                     {item.description}
                   </p>
                 </div>
@@ -541,14 +643,14 @@ const Services = () => {
         </section>
 
         {/* TESTIMONIALS */}
-        <section className="border-t border-slate-200 bg-[#F8FAFC] py-20">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 CLIENT STORIES
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 What clients say about working with us
               </h2>
             </div>
@@ -557,24 +659,24 @@ const Services = () => {
               {testimonials.map((t) => (
                 <div
                   key={t.name}
-                  className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-7 shadow-sm"
+                  className="flex flex-col justify-between rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-7 shadow-sm"
                 >
                   <div>
-                    <FaQuoteLeft className="text-2xl text-[#D4AF37]/40" />
-                    <p className="mt-4 text-slate-600 leading-7">
+                    <FaQuoteLeft className="text-2xl text-[#D4AF37]/40 dark:text-[#FFD700]/30" />
+                    <p className="mt-4 text-slate-600 dark:text-slate-300 leading-7">
                       {t.quote}
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-3 border-t border-slate-200 pt-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0A2647]/10 font-heading font-bold text-[#0A2647]">
+                  <div className="mt-6 flex items-center gap-3 border-t border-slate-200 dark:border-slate-700 pt-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0A2647]/10 dark:bg-slate-600 font-heading font-bold text-[#0A2647] dark:text-white">
                       {t.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-heading text-sm font-bold text-slate-900">
+                      <p className="font-heading text-sm font-bold text-slate-900 dark:text-white">
                         {t.name}
                       </p>
-                      <p className="text-xs text-slate-500">{t.role}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">{t.role}</p>
                     </div>
                   </div>
                 </div>
@@ -584,14 +686,14 @@ const Services = () => {
         </section>
 
         {/* GUARANTEES */}
-        <section className="bg-white py-20">
+        <section className="bg-white dark:bg-slate-800 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 OUR PROMISE
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 Working with us is simple and predictable
               </h2>
             </div>
@@ -600,15 +702,15 @@ const Services = () => {
               {guarantees.map((g) => (
                 <div
                   key={g.title}
-                  className="rounded-3xl border border-slate-200 bg-[#F8FAFC] p-6"
+                  className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 p-6"
                 >
-                  <div className="mb-4 text-2xl text-[#0F5132]">{g.icon}</div>
+                  <div className="mb-4 text-2xl text-[#0F5132] dark:text-[#6FCF97]">{g.icon}</div>
 
-                  <h3 className="font-heading text-xl font-bold text-slate-900">
+                  <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white">
                     {g.title}
                   </h3>
 
-                  <p className="mt-3 text-slate-600 leading-7">
+                  <p className="mt-3 text-slate-600 dark:text-slate-300 leading-7">
                     {g.description}
                   </p>
                 </div>
@@ -618,34 +720,34 @@ const Services = () => {
         </section>
 
         {/* LEGAL DOCUMENTS - Terms & Privacy with Tabs */}
-        <section className="border-t border-slate-200 bg-[#F8FAFC] py-20">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="max-w-3xl">
               <div className="flex items-center gap-3">
-                <FaFileContract className="text-3xl text-[#0F5132]" />
-                <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+                <FaFileContract className="text-3xl text-[#0F5132] dark:text-[#6FCF97]" />
+                <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                   LEGAL
                 </p>
               </div>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 Terms & Privacy
               </h2>
-              <p className="mt-4 text-slate-600 leading-8">
+              <p className="mt-4 text-slate-600 dark:text-slate-300 leading-8">
                 Our commitment to transparency and protecting your rights.
                 Choose a section below to learn more.
               </p>
             </div>
 
             {/* Tabs */}
-            <div className="mt-8 flex flex-wrap gap-3 border-b border-slate-200 pb-0">
+            <div className="mt-8 flex flex-wrap gap-3 border-b border-slate-200 dark:border-slate-700 pb-0">
               <button
                 onClick={() => setActiveTab("terms")}
                 className={`px-6 py-3 font-semibold text-sm transition-all duration-200 rounded-t-lg ${
                   activeTab === "terms"
-                    ? "bg-[#0F5132] text-white shadow-lg"
-                    : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200"
+                    ? "bg-[#0F5132] dark:bg-[#0F5132] text-white shadow-lg"
+                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
                 }`}
               >
                 <span className="flex items-center gap-2">
@@ -657,8 +759,8 @@ const Services = () => {
                 onClick={() => setActiveTab("privacy")}
                 className={`px-6 py-3 font-semibold text-sm transition-all duration-200 rounded-t-lg ${
                   activeTab === "privacy"
-                    ? "bg-[#0F5132] text-white shadow-lg"
-                    : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200"
+                    ? "bg-[#0F5132] dark:bg-[#0F5132] text-white shadow-lg"
+                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
                 }`}
               >
                 <span className="flex items-center gap-2">
@@ -674,8 +776,8 @@ const Services = () => {
             </div>
 
             {/* Effective Date */}
-            <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-center text-sm text-slate-600">
+            <div className="mt-8 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+              <p className="text-center text-sm text-slate-600 dark:text-slate-300">
                 <span className="font-semibold">Effective Date:</span> January 1,
                 2025 • Growth Aura Digital reserves the right to update these
                 documents at any time. Changes will be posted on our website.
@@ -685,20 +787,20 @@ const Services = () => {
         </section>
 
         {/* CTA */}
-        <section className="border-t border-slate-200 bg-gradient-to-b from-[#F8FAFC] to-white py-20">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-gradient-to-b from-[#F8FAFC] to-white dark:from-slate-800 dark:to-slate-900 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-10 shadow-sm lg:p-14">
+            <div className="rounded-[2rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-10 shadow-sm lg:p-14">
               <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
                 <div>
-                  <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+                  <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                     LET'S WORK TOGETHER
                   </p>
 
-                  <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+                  <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                     Ready to elevate your brand?
                   </h2>
 
-                  <p className="mt-4 text-slate-600 leading-8">
+                  <p className="mt-4 text-slate-600 dark:text-slate-300 leading-8">
                     Whether you need a website, branding, design support, or
                     digital content, Growth Aura can help you create a stronger
                     online presence.
@@ -708,7 +810,7 @@ const Services = () => {
                 <div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] px-7 py-4 text-white font-semibold transition hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] dark:bg-[#0F5132] px-7 py-4 text-white font-semibold transition hover:scale-105"
                   >
                     Start Your Project
                     <FaArrowRight size={12} />
@@ -716,7 +818,7 @@ const Services = () => {
 
                   <Link
                     to="/portfolio"
-                    className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-4 font-semibold text-[#0A2647]"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 px-7 py-4 font-semibold text-[#0A2647] dark:text-white"
                   >
                     View Portfolio
                   </Link>

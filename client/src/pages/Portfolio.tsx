@@ -190,26 +190,26 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-slate-900 text-slate-900 dark:text-white">
       <Navbar />
 
       <main className="pt-24">
         {/* HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#EEF4FA]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.14),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.10),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.06),transparent_34%)]" />
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAFC] to-[#EEF4FA] dark:from-slate-800 dark:via-slate-800 dark:to-slate-900">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.14),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.10),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.06),transparent_34%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.08),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(15,81,50,0.06),transparent_26%),radial-gradient(circle_at_center,rgba(10,38,71,0.04),transparent_34%)]" />
 
           <div className="relative mx-auto max-w-7x1 px-4 py-20 sm:px-6 lg:px-8">
             <div className="max-w-4xl">
-              <span className="inline-flex rounded-full border border-[#D4AF37]/30 bg-white px-4 py-2 text-xs font-semibold tracking-[0.25em] text-[#0A2647] shadow-sm">
+              <span className="inline-flex rounded-full border border-[#D4AF37]/30 dark:border-[#D4AF37]/20 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-[#0A2647] dark:text-[#D4AF37] shadow-sm">
                 OUR PORTFOLIO
               </span>
 
-              <h1 className="font-heading mt-6 text-5xl font-extrabold leading-tight text-[#0A2647] lg:text-6xl">
+              <h1 className="font-heading mt-6 text-5xl font-extrabold leading-tight text-[#0A2647] dark:text-white lg:text-6xl">
                 Work that speaks
-                <span className="block text-[#0F5132]">for itself</span>
+                <span className="block text-[#0F5132] dark:text-[#6FCF97]">for itself</span>
               </h1>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">
                 A collection of digital experiences, creative designs, and
                 brand solutions crafted to help businesses stand out and
                 grow.
@@ -217,13 +217,13 @@ const Portfolio: React.FC = () => {
             </div>
 
             {/* STATS */}
-            <div className="mt-14 grid grid-cols-2 gap-6 border-t border-slate-200 pt-10 sm:grid-cols-4">
+            <div className="mt-14 grid grid-cols-2 gap-6 border-t border-slate-200 dark:border-slate-700 pt-10 sm:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-heading text-3xl font-extrabold text-[#0A2647] lg:text-4xl">
+                  <p className="font-heading text-3xl font-extrabold text-[#0A2647] dark:text-white lg:text-4xl">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-sm text-slate-600">{stat.label}</p>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -231,18 +231,18 @@ const Portfolio: React.FC = () => {
         </section>
 
         {/* FEATURED */}
-        <section className="bg-white py-20">
+        <section className="bg-white dark:bg-slate-800 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[2rem] border border-slate-200 bg-[#F8FAFC] p-10 lg:p-14">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+            <div className="rounded-[2rem] border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 p-10 lg:p-14">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 FEATURED PROJECT
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] lg:text-5xl">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white lg:text-5xl">
                 Premium Business Website
               </h2>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">
                 Designed and developed a modern business website focused on
                 building trust, generating leads, and creating a strong
                 first impression from the moment a visitor lands on the
@@ -254,10 +254,10 @@ const Portfolio: React.FC = () => {
                   (item) => (
                     <div
                       key={item}
-                      className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4"
+                      className="flex items-center gap-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4"
                     >
-                      <FaCheckCircle className="text-[#0F5132]" />
-                      <span className="font-semibold text-slate-700">
+                      <FaCheckCircle className="text-[#0F5132] dark:text-[#6FCF97]" />
+                      <span className="font-semibold text-slate-700 dark:text-slate-300">
                         {item}
                       </span>
                     </div>
@@ -269,18 +269,18 @@ const Portfolio: React.FC = () => {
         </section>
 
         {/* PROJECTS */}
-        <section className="border-t border-slate-200 bg-[#F8FAFC] py-20">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 SELECTED PROJECTS
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 Showcasing creative and technical excellence
               </h2>
 
-              <p className="mt-4 text-slate-600 leading-8">
+              <p className="mt-4 text-slate-600 dark:text-slate-300 leading-8">
                 A look at the kind of work we do across web development,
                 design, and content creation. Click on any project to see
                 more details.
@@ -294,28 +294,28 @@ const Portfolio: React.FC = () => {
                 return (
                   <div
                     key={project.title}
-                    className="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-lg"
+                    className="group overflow-hidden rounded-[2rem] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-lg dark:hover:shadow-slate-700/30"
                   >
-                    <div className="flex h-44 items-center justify-center bg-gradient-to-br from-[#0A2647] to-[#0F5132] text-5xl text-white">
+                    <div className="flex h-44 items-center justify-center bg-gradient-to-br from-[#0A2647] to-[#0F5132] dark:from-[#0A2647] dark:to-[#0F5132] text-5xl text-white">
                       {project.icon}
                     </div>
 
                     <div className="p-8">
-                      <span className="text-sm font-semibold text-[#0F5132]">
+                      <span className="text-sm font-semibold text-[#0F5132] dark:text-[#6FCF97]">
                         {project.category}
                       </span>
 
-                      <h3 className="font-heading mt-3 text-2xl font-bold text-slate-900">
+                      <h3 className="font-heading mt-3 text-2xl font-bold text-slate-900 dark:text-white">
                         {project.title}
                       </h3>
 
-                      <p className="mt-4 leading-7 text-slate-600">
+                      <p className="mt-4 leading-7 text-slate-600 dark:text-slate-300">
                         {project.description}
                       </p>
 
                       <button
                         onClick={() => toggleProject(project.title)}
-                        className="mt-6 inline-flex items-center gap-2 font-semibold text-[#0F5132]"
+                        className="mt-6 inline-flex items-center gap-2 font-semibold text-[#0F5132] dark:text-[#6FCF97]"
                       >
                         {isOpen ? "Hide Details" : "View Details"}
                         <FaChevronDown
@@ -332,15 +332,15 @@ const Portfolio: React.FC = () => {
                             : "max-h-0 opacity-0"
                         }`}
                       >
-                        <div className="border-t border-slate-200 pt-5">
-                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                        <div className="border-t border-slate-200 dark:border-slate-700 pt-5">
+                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
                             The Brief
                           </p>
-                          <p className="mt-2 text-sm leading-6 text-slate-600">
+                          <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
                             {project.details.brief}
                           </p>
 
-                          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
                             What We Did
                           </p>
                           <div className="mt-3 grid gap-2">
@@ -349,18 +349,18 @@ const Portfolio: React.FC = () => {
                                 key={point}
                                 className="flex items-start gap-3"
                               >
-                                <FaCheckCircle className="mt-1 flex-shrink-0 text-[#0F5132]" />
-                                <span className="text-sm text-slate-700">
+                                <FaCheckCircle className="mt-1 flex-shrink-0 text-[#0F5132] dark:text-[#6FCF97]" />
+                                <span className="text-sm text-slate-700 dark:text-slate-300">
                                   {point}
                                 </span>
                               </div>
                             ))}
                           </div>
 
-                          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
                             The Result
                           </p>
-                          <p className="mt-2 text-sm leading-6 text-slate-600">
+                          <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
                             {project.details.result}
                           </p>
                         </div>
@@ -374,14 +374,14 @@ const Portfolio: React.FC = () => {
         </section>
 
         {/* TESTIMONIALS */}
-        <section className="bg-white py-20">
+        <section className="bg-white dark:bg-slate-800 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 CLIENT STORIES
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 What people say about working with us
               </h2>
             </div>
@@ -390,24 +390,24 @@ const Portfolio: React.FC = () => {
               {testimonials.map((t, index) => (
                 <div
                   key={index}
-                  className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-[#F8FAFC] p-7 shadow-sm"
+                  className="flex flex-col justify-between rounded-3xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800/50 p-7 shadow-sm"
                 >
                   <div>
-                    <FaQuoteLeft className="text-2xl text-[#D4AF37]/40" />
-                    <p className="mt-4 text-slate-600 leading-7">
+                    <FaQuoteLeft className="text-2xl text-[#D4AF37]/40 dark:text-[#FFD700]/30" />
+                    <p className="mt-4 text-slate-600 dark:text-slate-300 leading-7">
                       {t.quote}
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center gap-3 border-t border-slate-200 pt-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0A2647]/10 font-heading font-bold text-[#0A2647]">
+                  <div className="mt-6 flex items-center gap-3 border-t border-slate-200 dark:border-slate-700 pt-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0A2647]/10 dark:bg-slate-600 font-heading font-bold text-[#0A2647] dark:text-white">
                       {t.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-heading text-sm font-bold text-slate-900">
+                      <p className="font-heading text-sm font-bold text-slate-900 dark:text-white">
                         {t.name}
                       </p>
-                      <p className="text-xs text-slate-500">{t.role}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">{t.role}</p>
                     </div>
                   </div>
                 </div>
@@ -417,14 +417,14 @@ const Portfolio: React.FC = () => {
         </section>
 
         {/* PROCESS */}
-        <section className="border-t border-slate-200 bg-[#F8FAFC] py-20">
+        <section className="border-t border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-900 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+              <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                 OUR PROCESS
               </p>
 
-              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+              <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                 How we approach every project
               </h2>
             </div>
@@ -458,17 +458,17 @@ const Portfolio: React.FC = () => {
               ].map((item) => (
                 <div
                   key={item.step}
-                  className="rounded-3xl border border-slate-200 bg-white p-6"
+                  className="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6"
                 >
-                  <span className="text-lg font-bold text-[#D4AF37]">
+                  <span className="text-lg font-bold text-[#D4AF37] dark:text-[#FFD700]">
                     {item.step}
                   </span>
 
-                  <h3 className="font-heading mt-3 text-2xl font-bold text-slate-900">
+                  <h3 className="font-heading mt-3 text-2xl font-bold text-slate-900 dark:text-white">
                     {item.title}
                   </h3>
 
-                  <p className="mt-4 text-slate-600 leading-7">
+                  <p className="mt-4 text-slate-600 dark:text-slate-300 leading-7">
                     {item.description}
                   </p>
                 </div>
@@ -478,20 +478,20 @@ const Portfolio: React.FC = () => {
         </section>
 
         {/* CTA */}
-        <section className="bg-white py-20">
+        <section className="bg-white dark:bg-slate-800 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-b from-[#F8FAFC] to-white p-10 shadow-sm lg:p-14">
+            <div className="rounded-[2rem] border border-slate-200 dark:border-slate-700 bg-gradient-to-b from-[#F8FAFC] to-white dark:from-slate-800/50 dark:to-slate-800 p-10 shadow-sm lg:p-14">
               <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
                 <div>
-                  <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132]">
+                  <p className="text-sm font-semibold tracking-[0.3em] text-[#0F5132] dark:text-[#6FCF97]">
                     LET'S CREATE TOGETHER
                   </p>
 
-                  <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647]">
+                  <h2 className="font-heading mt-4 text-4xl font-bold text-[#0A2647] dark:text-white">
                     Let's create your next project
                   </h2>
 
-                  <p className="mt-4 text-slate-600 leading-8">
+                  <p className="mt-4 text-slate-600 dark:text-slate-300 leading-8">
                     Whether you're launching a new brand or upgrading an
                     existing one, we're ready to help build something
                     remarkable.
@@ -501,7 +501,7 @@ const Portfolio: React.FC = () => {
                 <div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] px-7 py-4 text-white font-semibold transition hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0F5132] dark:bg-[#0F5132] px-7 py-4 text-white font-semibold transition hover:scale-105"
                   >
                     Start Your Project
                     <FaArrowRight size={12} />
@@ -509,7 +509,7 @@ const Portfolio: React.FC = () => {
 
                   <Link
                     to="/services"
-                    className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-4 font-semibold text-[#0A2647]"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 px-7 py-4 font-semibold text-[#0A2647] dark:text-white"
                   >
                     Explore Services
                   </Link>
