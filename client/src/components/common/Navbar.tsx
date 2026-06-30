@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaArrowRight, FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
+import { FaArrowRight, FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import logo from "../../assets/logo.png";
-import { useTheme } from "../../hooks/useTheme";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `relative text-[15px] font-semibold tracking-wide transition-colors duration-300 ${
@@ -11,17 +10,82 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
       : "text-slate-700 hover:text-[#0A2647] dark:text-slate-300 dark:hover:text-white"
   }`;
 
+// Services data with categories
+const servicesData = [
+  { name: "Web Development", path: "/services#web-development" },
+  { name: "Mobile App Development", path: "/services#mobile-app" },
+  { name: "Cloud Driven Innovation", path: "/services#cloud-innovation" },
+  { name: "Intelligent SaaS Solutions", path: "/services#saas" },
+  { name: "UI/UX Design", path: "/services#ui-ux" },
+  { name: "Graphic Design", path: "/services#graphic-design" },
+  { name: "Digital Marketing", path: "/services#digital-marketing" },
+  { name: "Software Testing", path: "/services#software-testing" },
+  { name: "CRM Apps", path: "/services#crm" },
+  { name: "ERP & HRM Solutions", path: "/services#erp-hrm" },
+  { name: "Custom Apps", path: "/services#custom-apps" },
+  { name: "Video Editing", path: "/services#video-editing" },
+];
+
+// Courses data with categories
+const coursesData = {
+  "Development & Programming": [
+    "MERN Stack Development",
+    "Web Development",
+    "Python Programming",
+    "Core Java",
+    "Database Engineering",
+  ],
+  "Design & Creative": [
+    "UI/UX Design",
+    "Graphic Design",
+    "Video Editing",
+  ],
+  "AI & Data": [
+    "AI Engineering",
+    "AI Integration Using Python",
+    "ETL Testing",
+    "Business Analyst",
+  ],
+  "Business & DevOps": [
+    "Digital Marketing",
+    "Tally / Tally Prime",
+    "DevOps Engineering",
+    "Software Testing",
+  ],
+  "Programs": [
+    "Internship Program",
+    "Final Year Projects",
+  ],
+};
+
+// Flatten courses for mobile menu
+const allCourses = Object.values(coursesData).flat();
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const closeMenu = () => setIsOpen(false);
+  const closeDropdown = () => setOpenDropdown(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        closeDropdown();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full">
       <nav className="border-b border-slate-200/80 bg-white/90 backdrop-blur-xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] dark:border-slate-800 dark:bg-slate-950/90 dark:shadow-[0_8px_30px_rgb(0,0,0,0.25)]">
         <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link to="/" onClick={closeMenu} className="flex items-center gap-4">
+          {/* Logo */}
+          <Link to="/" onClick={closeMenu} className="flex items-center gap-4 shrink-0">
             <img
               src={logo}
               alt="Growth Aura Digital Agency"
@@ -38,19 +102,102 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <div className="hidden items-center gap-10 md:flex">
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-8 xl:gap-10 md:flex">
             <NavLink to="/" className={navLinkClass}>
               Home
             </NavLink>
             <NavLink to="/about" className={navLinkClass}>
               About
             </NavLink>
-            <NavLink to="/services" className={navLinkClass}>
-              Services
-            </NavLink>
-            <NavLink to="/courses" className={navLinkClass}>
-              Courses
-            </NavLink>
+
+            {/* Services Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setOpenDropdown(openDropdown === "services" ? null : "services")}
+                className={`group flex items-center gap-1.5 text-[15px] font-semibold tracking-wide transition-colors duration-300 ${
+                  openDropdown === "services"
+                    ? "text-[#0F5132] dark:text-[#D4AF37]"
+                    : "text-slate-700 hover:text-[#0A2647] dark:text-slate-300 dark:hover:text-white"
+                }`}
+              >
+                Services
+                <FaChevronDown
+                  className={`text-xs transition-transform duration-300 ${
+                    openDropdown === "services" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`absolute left-1/2 -translate-x-1/2 mt-3 w-64 origin-top rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-200/50 transition-all duration-300 dark:border-slate-700 dark:bg-slate-950 dark:shadow-slate-800/30 ${
+                  openDropdown === "services"
+                    ? "scale-100 opacity-100 visible"
+                    : "scale-95 opacity-0 invisible"
+                }`}
+              >
+                <div className="grid gap-1">
+                  {servicesData.map((service) => (
+                    <Link
+                      key={service.name}
+                      to={service.path}
+                      onClick={() => { closeDropdown(); closeMenu(); }}
+                      className="rounded-xl px-4 py-2.5 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-[#0F5132]/5 hover:text-[#0F5132] dark:text-slate-300 dark:hover:bg-[#D4AF37]/10 dark:hover:text-[#D4AF37]"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Courses Dropdown with Categories */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setOpenDropdown(openDropdown === "courses" ? null : "courses")}
+                className={`group flex items-center gap-1.5 text-[15px] font-semibold tracking-wide transition-colors duration-300 ${
+                  openDropdown === "courses"
+                    ? "text-[#0F5132] dark:text-[#D4AF37]"
+                    : "text-slate-700 hover:text-[#0A2647] dark:text-slate-300 dark:hover:text-white"
+                }`}
+              >
+                Courses
+                <FaChevronDown
+                  className={`text-xs transition-transform duration-300 ${
+                    openDropdown === "courses" ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`absolute left-1/2 -translate-x-1/2 mt-3 w-[480px] origin-top rounded-2xl border border-slate-200 bg-white p-3 shadow-xl shadow-slate-200/50 transition-all duration-300 dark:border-slate-700 dark:bg-slate-950 dark:shadow-slate-800/30 ${
+                  openDropdown === "courses"
+                    ? "scale-100 opacity-100 visible"
+                    : "scale-95 opacity-0 invisible"
+                }`}
+              >
+                <div className="grid grid-cols-2 gap-3">
+                  {Object.entries(coursesData).map(([category, courses]) => (
+                    <div key={category} className="space-y-1.5">
+                      <p className="px-3 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500">
+                        {category}
+                      </p>
+                      {courses.map((course) => (
+                        <Link
+                          key={course}
+                          to={`/courses#${course.toLowerCase().replace(/ /g, '-')}`}
+                          onClick={() => { closeDropdown(); closeMenu(); }}
+                          className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition-all duration-200 hover:bg-[#0F5132]/5 hover:text-[#0F5132] dark:text-slate-300 dark:hover:bg-[#D4AF37]/10 dark:hover:text-[#D4AF37]"
+                        >
+                          {course}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <NavLink to="/portfolio" className={navLinkClass}>
               Portfolio
             </NavLink>
@@ -59,16 +206,8 @@ const Navbar = () => {
             </NavLink>
           </div>
 
+          {/* Desktop CTA */}
           <div className="hidden items-center gap-3 md:flex">
-            {/* <button
-              type="button"
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
-            >
-              {theme === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />}
-            </button> */}
-
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#c89e2f] to-[#0F5132] px-6 py-3 text-[15px] font-semibold text-white shadow-lg shadow-amber-500/20 transition-transform duration-300 hover:scale-105"
@@ -78,6 +217,7 @@ const Navbar = () => {
             </Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             type="button"
             className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white p-3 text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 md:hidden"
@@ -89,12 +229,13 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Mobile Menu */}
         <div
           className={`md:hidden overflow-hidden border-t border-slate-200 bg-white transition-all duration-300 dark:border-slate-800 dark:bg-slate-950 ${
-            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4 sm:px-6">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 sm:px-6">
             <NavLink to="/" onClick={closeMenu} className={navLinkClass}>
               Home
             </NavLink>
@@ -114,26 +255,10 @@ const Navbar = () => {
               Contact
             </NavLink>
 
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-[15px] font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
-            >
-              {theme === "dark" ? (
-                <>
-                  Light Mode <FaSun size={12} />
-                </>
-              ) : (
-                <>
-                  Dark Mode <FaMoon size={12} />
-                </>
-              )}
-            </button>
-
             <Link
               to="/contact"
               onClick={closeMenu}
-              className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#c89e2f] to-[#0F5132] px-5 py-3 text-[15px] font-semibold text-white shadow-lg shadow-amber-500/20"
+              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#c89e2f] to-[#0F5132] px-5 py-3 text-[15px] font-semibold text-white shadow-lg shadow-amber-500/20"
             >
               Free Consultation
               <FaArrowRight size={12} />
